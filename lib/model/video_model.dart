@@ -4,11 +4,12 @@ class VideoModel {
   String? userPic;
   String? videoTitle;
   String? songName;
-  String? likes;
+  int? likes;
   String? comments;
   String? videoDescription;
   String url;
   String? thumbnail;
+  bool liked;
 
   VideoModel({
     this.id,
@@ -21,6 +22,7 @@ class VideoModel {
     this.videoDescription,
     this.thumbnail,
     required this.url,
+    this.liked = false,
   });
 
   VideoModel.fromJson(Map<dynamic, dynamic> json)
@@ -33,6 +35,7 @@ class VideoModel {
         comments = json['comments'],
         url = json['url'],
         thumbnail = json['thumbnail'],
-        videoDescription = json['description'];
+        videoDescription = json['description'],
+        liked = json['liked'] ?? false;
 
 }

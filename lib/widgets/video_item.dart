@@ -31,21 +31,18 @@ class _VideoItemState extends State<VideoItem> {
   @override
   Widget build(BuildContext context) {
     return _videoController != null
-        ? AspectRatio(
-            aspectRatio: _videoController!.value.aspectRatio,
-            child: VisibilityDetector(
-              onVisibilityChanged: (visibleInfo) {
-                if (visibleInfo.visibleFraction == 1) {
-                  if (!_videoController!.value.isPlaying) {
-                    _videoController!.play();
-                    _videoController!.setLooping(true);
-                  }
+        ? VisibilityDetector(
+            onVisibilityChanged: (visibleInfo) {
+              if (visibleInfo.visibleFraction == 1) {
+                if (!_videoController!.value.isPlaying) {
+                  _videoController!.play();
+                  _videoController!.setLooping(true);
                 }
-              },
-              key: UniqueKey(),
-              child: VideoPlayerApp(
-                controller: _videoController!,
-              ),
+              }
+            },
+            key: UniqueKey(),
+            child: VideoPlayerApp(
+              controller: _videoController!,
             ),
           )
         : VisibilityDetector(

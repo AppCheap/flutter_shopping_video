@@ -13,6 +13,8 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
 
   @override
   Widget build(BuildContext context) {
+    double screenRatio = MediaQuery.of(context).size.aspectRatio;
+
     return GestureDetector(
       onTap: () {
         if (widget.controller.value.isPlaying) {
@@ -27,15 +29,38 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
           });
         }
       },
-      child: Stack(
-        children: [
-          VideoPlayer(widget.controller),
-          if (_showPause)
-            const Center(
-              child: Icon(Icons.play_arrow, color: Colors.white54, size: 40),
+      child: (widget.controller.value.aspectRatio < screenRatio)
+          ? Stack(
+              fit: StackFit.expand,
+              children: [
+                SizedBox.expand(
+                  child: FittedBox(
+                    fit: BoxFit.cover,
+                    child: SizedBox(
+                      width: widget.controller.value.size.width,
+                      height: widget.controller.value.size.height,
+                      child: VideoPlayer(widget.controller),
+                    ),
+                  ),
+                ),
+                if (_showPause)
+                  const Center(
+                    child: Icon(Icons.play_arrow, color: Colors.white54, size: 40),
+                  ),
+              ],
+            )
+          : AspectRatio(
+              aspectRatio: widget.controller.value.aspectRatio,
+              child: Stack(
+                children: [
+                  VideoPlayer(widget.controller),
+                  if (_showPause)
+                    const Center(
+                      child: Icon(Icons.play_arrow, color: Colors.white54, size: 40),
+                    ),
+                ],
+              ),
             ),
-        ],
-      ),
     );
   }
 }

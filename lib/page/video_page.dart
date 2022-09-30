@@ -15,7 +15,7 @@ class VideoPage extends StatelessWidget {
   final VideoModel video;
   final Widget Function(VideoModel? video)? customVideoInfo;
   final Widget Function(VideoModel? video)? followWidget;
-  final Widget Function(VideoModel? video)? likeWidget;
+  final Widget Function(VideoModel? video, Function(int likes, bool liked))? likeWidget;
   final Widget Function(VideoModel? video)? commentWidget;
   final Widget Function(VideoModel? video)? shareWidget;
   final Widget Function(VideoModel? video)? buyWidget;
@@ -41,7 +41,7 @@ class VideoPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: <Widget>[
                   (customVideoInfo != null)
-                      ? customVideoInfo!(video)
+                      ? Expanded(child: customVideoInfo!(video))
                       : VideoInformation(
                           video.user ?? "",
                           video.videoTitle ?? "",

@@ -65,7 +65,19 @@ class VideoShopFlutter extends StatefulWidget {
   final List<Map<String, dynamic>> listData;
   final Widget Function(VideoModel? video)? customVideoInfo;
   final Widget Function(VideoModel? video)? followWidget;
-  final Widget Function(VideoModel? video)? likeWidget;
+
+  /// Create like widget.
+  ///
+  /// The first argument is instant of Video.
+  ///
+  /// The second argument is function to update data,
+  ///
+  /// this function receives two argument:
+  ///
+  /// first is total likes, second is liked status (true or false)
+  ///
+  /// this function need be called when total likes or liked status be changed
+  final Widget Function(VideoModel? video, Function(int likes, bool liked))? likeWidget;
   final Widget Function(VideoModel? video)? commentWidget;
   final Widget Function(VideoModel? video)? shareWidget;
   final Widget Function(VideoModel? video)? buyWidget;

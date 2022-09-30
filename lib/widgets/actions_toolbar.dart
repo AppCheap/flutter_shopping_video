@@ -19,7 +19,7 @@ class ActionsToolbar extends StatelessWidget {
 
   final VideoModel video;
   final Widget Function(VideoModel? video)? followWidget;
-  final Widget Function(VideoModel? video)? likeWidget;
+  final Widget Function(VideoModel? video, Function(int likes, bool liked))? likeWidget;
   final Widget Function(VideoModel? video)? commentWidget;
   final Widget Function(VideoModel? video)? shareWidget;
   final Widget Function(VideoModel? video)? buyWidget;
@@ -41,8 +41,14 @@ class ActionsToolbar extends StatelessWidget {
       child: Column(mainAxisSize: MainAxisSize.min, children: [
         (followWidget != null) ? followWidget!(video) : _getFollowAction(pictureUrl: video.url),
         (likeWidget != null)
-            ? likeWidget!(video)
-            : _getSocialAction(icon: Icons.heart_broken, title: video.likes ?? "0"),
+            ? likeWidget!(
+                video,
+                (likes, liked) {
+                  video.likes = likes;
+                  video.liked = liked;
+                },
+              )
+            : _getSocialAction(icon: Icons.heart_broken, title: (video.likes ?? 0).toString()),
         (commentWidget != null)
             ? commentWidget!(video)
             : _getSocialAction(icon: Icons.chat_bubble, title: video.comments ?? "0"),
@@ -111,7 +117,8 @@ class ActionsToolbar extends StatelessWidget {
                   loadingBuilder: (context, child, loadingProgress) {
                     return Container(
                       color: Colors.white70,
-                    );                  },
+                    );
+                  },
                   errorBuilder: (context, object, stackTrace) {
                     return Container(
                       color: Colors.white70,
