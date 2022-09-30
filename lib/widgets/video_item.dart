@@ -33,7 +33,7 @@ class _VideoItemState extends State<VideoItem> {
     return _videoController != null
         ? VisibilityDetector(
             onVisibilityChanged: (visibleInfo) {
-              if (visibleInfo.visibleFraction == 1) {
+              if (visibleInfo.visibleFraction > 0.8) {
                 if (!_videoController!.value.isPlaying) {
                   _videoController!.play();
                   _videoController!.setLooping(true);
