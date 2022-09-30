@@ -18,8 +18,10 @@ class VideoShopFlutter extends StatefulWidget {
   /// ```dart
   /// {
   ///   'id': 123,
-  ///   'url': 'https://video.mp4'
-  ///   'thumbnail': 'https://thumbnail.jpg'
+  ///   'url': 'https://video.mp4',
+  ///   'thumbnail': 'https://thumbnail.jpg',
+  ///   'likes': 100,
+  ///   'liked': true,
   /// }
   /// ```
   ///
@@ -50,19 +52,55 @@ class VideoShopFlutter extends StatefulWidget {
   ///  )
   ///
   /// ```
-  const VideoShopFlutter({
-    Key? key,
-    required this.listData,
-    this.customVideoInfo,
-    this.followWidget,
-    this.likeWidget,
-    this.commentWidget,
-    this.shareWidget,
-    this.buyWidget,
-    required this.pageSize,
-    required this.loadMore,
-  }) : super(key: key);
+  const VideoShopFlutter(
+      {Key? key,
+      required this.listData,
+      this.customVideoInfo,
+      this.followWidget,
+      this.likeWidget,
+      this.commentWidget,
+      this.shareWidget,
+      this.buyWidget,
+      required this.pageSize,
+      required this.loadMore,
+      this.contentPadding})
+      : super(key: key);
+  /// Your input data.
+  ///
+  /// Data must be a List<Map<String, dynamic>.
+  ///
+  /// Follow this format data:
+  ///
+  /// ```dart
+  /// {
+  ///   'id': 123,
+  ///   'url': 'https://video.mp4',
+  ///   'thumbnail': 'https://thumbnail.jpg',
+  ///   'likes': 100,
+  ///   'liked': true,
+  ///   'description': 'this is description'
+  ///   'video_title': this is title of video'
+  /// }
+  /// ```
   final List<Map<String, dynamic>> listData;
+  /// Your pageSize when you call get-list API.
+  final int pageSize;
+
+  /// Load more data.
+  ///
+  /// It is called every time current PageView is at position:
+  ///
+  /// [listData.length] - ([pageSize]/2)
+  ///
+  /// The first argument is current page of video list (start at 0),
+  ///
+  /// it depends on [pageSize].
+  ///
+  /// The seconds argument is your [pageSize]
+  final Function(int page, int pageSize) loadMore;
+
+  /// Padding between content above video and device screen.
+  final EdgeInsetsGeometry? contentPadding;
   final Widget Function(VideoModel? video)? customVideoInfo;
   final Widget Function(VideoModel? video)? followWidget;
 
@@ -81,11 +119,6 @@ class VideoShopFlutter extends StatefulWidget {
   final Widget Function(VideoModel? video)? commentWidget;
   final Widget Function(VideoModel? video)? shareWidget;
   final Widget Function(VideoModel? video)? buyWidget;
-  final int pageSize;
-  final Function(
-    int page,
-    int pageSize,
-  ) loadMore;
 
   @override
   State<VideoShopFlutter> createState() => _VideoShopFlutterState();

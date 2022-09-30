@@ -36,9 +36,9 @@ class ActionsToolbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 100.0,
-      child: Column(mainAxisSize: MainAxisSize.min, children: [
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
         (followWidget != null) ? followWidget!(video) : _getFollowAction(pictureUrl: video.url),
         (likeWidget != null)
             ? likeWidget!(
@@ -58,7 +58,7 @@ class ActionsToolbar extends StatelessWidget {
         (buyWidget != null)
             ? buyWidget!(video)
             : _getSocialAction(icon: Icons.shopping_cart_checkout_outlined, title: 'Buy'),
-      ]),
+      ],
     );
   }
 

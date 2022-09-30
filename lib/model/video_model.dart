@@ -37,5 +37,4 @@ class VideoModel {
         thumbnail = json['thumbnail'],
         videoDescription = json['description'],
         liked = json['liked'] ?? false;
-
 }

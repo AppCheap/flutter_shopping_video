@@ -23,10 +23,6 @@ class _VideoItemState extends State<VideoItem> {
     _videoController?.dispose();
   }
 
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,10 +61,10 @@ class _VideoItemState extends State<VideoItem> {
                   ),
                 );
               },
-              fit: BoxFit.fill,
+              fit: BoxFit.fitWidth,
             ),
             onVisibilityChanged: (info) {
-              if (info.visibleFraction == 1) {
+              if (info.visibleFraction > 0.6) {
                 _videoController = VideoPlayerController.network(widget.video.url)
                   ..initialize().then((_) {
                     setState(() {});

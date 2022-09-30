@@ -11,10 +11,11 @@ class VideoPlayerApp extends StatefulWidget {
 class _VideoPlayerAppState extends State<VideoPlayerApp> {
   bool _showPause = false;
 
+
+
   @override
   Widget build(BuildContext context) {
     double screenRatio = MediaQuery.of(context).size.aspectRatio;
-
     return GestureDetector(
       onTap: () {
         if (widget.controller.value.isPlaying) {

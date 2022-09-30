@@ -10,9 +10,8 @@ class VideoInformation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-        child: Container(
+        child: SizedBox(
             height: 120.0,
-            padding: const EdgeInsets.only(left: 20.0),
             child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.end,

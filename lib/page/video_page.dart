@@ -11,6 +11,7 @@ class VideoPage extends StatelessWidget {
     required this.commentWidget,
     required this.shareWidget,
     required this.buyWidget,
+    this.contentPadding,
   }) : super(key: key);
   final VideoModel video;
   final Widget Function(VideoModel? video)? customVideoInfo;
@@ -19,6 +20,7 @@ class VideoPage extends StatelessWidget {
   final Widget Function(VideoModel? video)? commentWidget;
   final Widget Function(VideoModel? video)? shareWidget;
   final Widget Function(VideoModel? video)? buyWidget;
+  final EdgeInsetsGeometry? contentPadding;
 
   @override
   Widget build(BuildContext context) {
@@ -32,33 +34,41 @@ class VideoPage extends StatelessWidget {
               video: video,
             ),
           ),
-          //Video action & info
-          Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: <Widget>[
-                  (customVideoInfo != null)
-                      ? Expanded(child: customVideoInfo!(video))
-                      : VideoInformation(
-                          video.user ?? "",
-                          video.videoTitle ?? "",
-                          video.videoDescription ?? "",
-                        ),
-                  ActionsToolbar(
-                    video: video,
-                    followWidget: followWidget,
-                    likeWidget: likeWidget,
-                    commentWidget: commentWidget,
-                    shareWidget: shareWidget,
-                    buyWidget: buyWidget,
-                  ),
-                ],
-              ),
-              const SizedBox(height: 20)
-            ],
+
+          //Video action & info______________
+          Padding(
+            padding: contentPadding ??
+                const EdgeInsets.only(
+                  bottom: 90,
+                  left: 20,
+                  right: 10,
+                ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: <Widget>[
+                    (customVideoInfo != null)
+                        ? Expanded(child: customVideoInfo!(video))
+                        : VideoInformation(
+                            video.user ?? "",
+                            video.videoTitle ?? "",
+                            video.videoDescription ?? "",
+                          ),
+                    ActionsToolbar(
+                      video: video,
+                      followWidget: followWidget,
+                      likeWidget: likeWidget,
+                      commentWidget: commentWidget,
+                      shareWidget: shareWidget,
+                      buyWidget: buyWidget,
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ],
       ),
