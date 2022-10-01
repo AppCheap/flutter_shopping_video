@@ -35,6 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
   // List<Map<String, dynamic>> data = playList.sublist(0, 8);
   List<Map<String, dynamic>> data = [];
   ApiService service = ApiService();
+  List<int> videoWatched = [];
 
   @override
   void initState() {
@@ -56,10 +57,12 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: VideoShopFlutter(
         listData: data,
+        videoWatched: videoWatched,
         pageSize: 4,
         loadMore: (page, pageSize) async {
           //just for test__
           debugPrint("load more...");
+          print("Video $videoWatched");
           List<Map<String, dynamic>> newData = await service.mapData((page + 2), 4);
           if (newData.isNotEmpty) {
             setState(() {
