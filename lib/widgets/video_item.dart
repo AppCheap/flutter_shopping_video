@@ -8,8 +8,10 @@ class VideoItem extends StatefulWidget {
   const VideoItem({
     Key? key,
     required this.video,
+    required this.videoWatched,
   }) : super(key: key);
   final VideoModel video;
+  final List<int> videoWatched;
   @override
   State<VideoItem> createState() => _VideoItemState();
 }
@@ -32,6 +34,9 @@ class _VideoItemState extends State<VideoItem> {
                 if (!_videoController!.value.isPlaying) {
                   _videoController!.play();
                   _videoController!.setLooping(true);
+                  if(widget.video.id != null){
+                    widget.videoWatched.add(widget.video.id!);
+                  }
                 }
               }
             },

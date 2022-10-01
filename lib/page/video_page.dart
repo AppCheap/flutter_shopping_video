@@ -12,6 +12,7 @@ class VideoPage extends StatelessWidget {
     required this.shareWidget,
     required this.buyWidget,
     this.contentPadding,
+    required this.videoWatched
   }) : super(key: key);
   final VideoModel video;
   final Widget Function(VideoModel? video)? customVideoInfo;
@@ -21,6 +22,7 @@ class VideoPage extends StatelessWidget {
   final Widget Function(VideoModel? video)? shareWidget;
   final Widget Function(VideoModel? video)? buyWidget;
   final EdgeInsetsGeometry? contentPadding;
+  final List<int> videoWatched;
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +34,7 @@ class VideoPage extends StatelessWidget {
             alignment: Alignment.center,
             child: VideoItem(
               video: video,
+              videoWatched: videoWatched,
             ),
           ),
 

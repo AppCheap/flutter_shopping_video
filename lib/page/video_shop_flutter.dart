@@ -64,8 +64,12 @@ class VideoShopFlutter extends StatefulWidget {
       this.buyWidget,
       required this.pageSize,
       required this.loadMore,
-      this.contentPadding})
+      this.contentPadding,
+       required this.videoWatched,
+      })
       : super(key: key);
+  /// Id of your watched videos
+  final List<int> videoWatched;
 
   /// Your input data.
   ///
@@ -168,6 +172,7 @@ class _VideoShopFlutterState extends State<VideoShopFlutter> {
           commentWidget: widget.commentWidget,
           shareWidget: widget.shareWidget,
           buyWidget: widget.buyWidget,
+          videoWatched: widget.videoWatched,
         ),
       ),
     );
