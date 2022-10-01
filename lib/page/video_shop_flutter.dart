@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:video_shop_flutter/model/video_model.dart';
 import 'package:video_shop_flutter/page/video_page.dart';
 
@@ -65,6 +66,7 @@ class VideoShopFlutter extends StatefulWidget {
       required this.loadMore,
       this.contentPadding})
       : super(key: key);
+
   /// Your input data.
   ///
   /// Data must be a List<Map<String, dynamic>.
@@ -83,6 +85,7 @@ class VideoShopFlutter extends StatefulWidget {
   /// }
   /// ```
   final List<Map<String, dynamic>> listData;
+
   /// Your pageSize when you call get-list API.
   final int pageSize;
 
@@ -143,6 +146,15 @@ class _VideoShopFlutterState extends State<VideoShopFlutter> {
         }
       }
     });
+    if (widget.listData.isEmpty) {
+      return Container(
+          color: Colors.black,
+          child: const Center(
+            child: CupertinoActivityIndicator(
+              color: Colors.white,
+            ),
+          ));
+    }
     return PageView(
       controller: _pageController,
       scrollDirection: Axis.vertical,

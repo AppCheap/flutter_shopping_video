@@ -23,10 +23,9 @@ class _VideoItemState extends State<VideoItem> {
     _videoController?.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
-    return _videoController != null
+    return _videoController != null && _videoController!.value.isInitialized
         ? VisibilityDetector(
             onVisibilityChanged: (visibleInfo) {
               if (visibleInfo.visibleFraction > 0.8) {
@@ -66,9 +65,11 @@ class _VideoItemState extends State<VideoItem> {
             onVisibilityChanged: (info) {
               if (info.visibleFraction > 0.6) {
                 _videoController = VideoPlayerController.network(widget.video.url)
-                  ..initialize().then((_) {
-                    setState(() {});
-                  });
+                  ..initialize().then(
+                    (_) {
+                      setState(() {});
+                    },
+                  );
               }
             },
           );
