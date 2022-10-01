@@ -69,7 +69,7 @@ class VideoShopFlutter extends StatefulWidget {
       })
       : super(key: key);
   /// Id of your watched videos
-  final List<int> videoWatched;
+  final List<String> videoWatched;
 
   /// Your input data.
   ///

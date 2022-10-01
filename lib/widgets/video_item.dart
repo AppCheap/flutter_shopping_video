@@ -11,7 +11,7 @@ class VideoItem extends StatefulWidget {
     required this.videoWatched,
   }) : super(key: key);
   final VideoModel video;
-  final List<int> videoWatched;
+  final List<String> videoWatched;
   @override
   State<VideoItem> createState() => _VideoItemState();
 }
@@ -35,7 +35,7 @@ class _VideoItemState extends State<VideoItem> {
                   _videoController!.play();
                   _videoController!.setLooping(true);
                   if(widget.video.id != null){
-                    widget.videoWatched.add(widget.video.id!);
+                    widget.videoWatched.add(widget.video.id!.toString());
                   }
                 }
               }

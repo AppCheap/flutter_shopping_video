@@ -22,7 +22,7 @@ class VideoPage extends StatelessWidget {
   final Widget Function(VideoModel? video)? shareWidget;
   final Widget Function(VideoModel? video)? buyWidget;
   final EdgeInsetsGeometry? contentPadding;
-  final List<int> videoWatched;
+  final List<String> videoWatched;
 
   @override
   Widget build(BuildContext context) {
