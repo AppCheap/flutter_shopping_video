@@ -9,7 +9,8 @@ class ActionsToolbar extends StatelessWidget {
   final Widget Function(VideoModel? video)? commentWidget;
   final Widget Function(VideoModel? video)? shareWidget;
   final Widget Function(VideoModel? video)? buyWidget;
-
+  final Widget Function(VideoModel? video, int index)? viewWidget;
+  final int index;
   const ActionsToolbar({
     super.key,
     required this.video,
@@ -18,6 +19,8 @@ class ActionsToolbar extends StatelessWidget {
     required this.commentWidget,
     required this.shareWidget,
     required this.buyWidget,
+    required this.viewWidget,
+    required this.index,
   });
 
   @override
@@ -41,6 +44,9 @@ class ActionsToolbar extends StatelessWidget {
         (shareWidget != null)
             ? shareWidget!(video)
             : _getSocialAction(icon: Icons.reply, title: 'Share', isShare: true),
+        (viewWidget != null)
+            ? viewWidget!(video, index)
+            : const SizedBox.shrink(),
         (buyWidget != null)
             ? buyWidget!(video)
             : _getSocialAction(icon: Icons.shopping_cart_checkout_outlined, title: 'Buy'),

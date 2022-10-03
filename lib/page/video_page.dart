@@ -11,11 +11,13 @@ class VideoPage extends StatelessWidget {
     required this.commentWidget,
     required this.shareWidget,
     required this.buyWidget,
+    required this.viewWidget,
     this.informationPadding,
     required this.videoWatched,
     this.informationAlign,
     this.actionsAlign,
     this.actionsPadding,
+    required this.index,
   }) : super(key: key);
   final VideoModel video;
   final Widget Function(VideoModel? video)? customVideoInfo;
@@ -24,12 +26,13 @@ class VideoPage extends StatelessWidget {
   final Widget Function(VideoModel? video)? commentWidget;
   final Widget Function(VideoModel? video)? shareWidget;
   final Widget Function(VideoModel? video)? buyWidget;
+  final Widget Function(VideoModel? video, int index)? viewWidget;
   final EdgeInsetsGeometry? informationPadding;
   final List<String> videoWatched;
   final AlignmentGeometry? informationAlign;
   final AlignmentGeometry? actionsAlign;
   final EdgeInsetsGeometry? actionsPadding;
-
+  final int index;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -70,6 +73,8 @@ class VideoPage extends StatelessWidget {
                 commentWidget: commentWidget,
                 shareWidget: shareWidget,
                 buyWidget: buyWidget,
+                viewWidget: viewWidget,
+                index: index,
               ),
             ),
           ),

@@ -62,6 +62,7 @@ class VideoShopFlutter extends StatefulWidget {
     this.commentWidget,
     this.shareWidget,
     this.buyWidget,
+    this.viewWidget,
     required this.pageSize,
     required this.loadMore,
     this.informationPadding,
@@ -145,6 +146,7 @@ class VideoShopFlutter extends StatefulWidget {
   final Widget Function(VideoModel? video)? commentWidget;
   final Widget Function(VideoModel? video)? shareWidget;
   final Widget Function(VideoModel? video)? buyWidget;
+  final Widget Function(VideoModel? video, int index)? viewWidget;
 
   @override
   State<VideoShopFlutter> createState() => _VideoShopFlutterState();
@@ -205,6 +207,8 @@ class _VideoShopFlutterState extends State<VideoShopFlutter> {
           actionsPadding: widget.actionsPadding,
           informationAlign: widget.informationAlign,
           informationPadding: widget.informationPadding,
+          viewWidget: widget.viewWidget,
+          index: index,
         ),
       ),
     );
