@@ -56,6 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
     debugPrint("\n data length: ${data.length} \n");
     return Scaffold(
       body: VideoShopFlutter(
+        initPage: (videoWatched.isEmpty) ? 0 : (videoWatched.length - 1),
         listData: data,
         videoWatched: videoWatched,
         pageSize: 4,

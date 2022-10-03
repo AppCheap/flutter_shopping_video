@@ -32,7 +32,6 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
       },
       child: (widget.controller.value.aspectRatio < screenRatio)
           ? Stack(
-              fit: StackFit.expand,
               children: [
                 SizedBox.expand(
                   child: FittedBox(
@@ -45,9 +44,7 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
                   ),
                 ),
                 if (_showPause)
-                  const Center(
-                    child: Icon(Icons.play_arrow, color: Colors.white54, size: 40),
-                  ),
+                  const PauseIcon(),
               ],
             )
           : AspectRatio(
@@ -56,12 +53,34 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
                 children: [
                   VideoPlayer(widget.controller),
                   if (_showPause)
-                    const Center(
-                      child: Icon(Icons.play_arrow, color: Colors.white54, size: 40),
-                    ),
+                    const PauseIcon(),
                 ],
               ),
             ),
     );
   }
+
 }
+
+class PauseIcon extends StatelessWidget {
+  const PauseIcon({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.center,
+      child: Container(
+        width: 45,
+        height: 45,
+        decoration: BoxDecoration(
+          color: Colors.black.withOpacity(0.3),
+          borderRadius: BorderRadius.circular(50),
+        ),
+        child: Center(
+          child: Icon(Icons.play_arrow, color: Colors.white.withOpacity(0.5), size: 40),
+        ),
+      ),
+    );
+  }
+}
+

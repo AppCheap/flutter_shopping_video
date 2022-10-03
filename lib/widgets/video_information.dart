@@ -9,35 +9,34 @@ class VideoInformation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-        child: SizedBox(
-            height: 120.0,
-            child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    username,
-                    style: const TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(
-                    height: 7,
-                  ),
-                  Text(
-                    videoTitle,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      color: Colors.white,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 7,
-                  ),
-                  Text(songInfo, style: const TextStyle(color: Colors.white, fontSize: 14.0)),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                ])));
+    return SizedBox(
+        height: 120.0,
+        child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                username,
+                style: const TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(
+                height: 7,
+              ),
+              Text(
+                videoTitle,
+                style: const TextStyle(
+                  fontSize: 16,
+                  color: Colors.white,
+                ),
+              ),
+              const SizedBox(
+                height: 7,
+              ),
+              Text(songInfo, style: const TextStyle(color: Colors.white, fontSize: 14.0)),
+              const SizedBox(
+                height: 10,
+              ),
+            ]));
   }
 }
