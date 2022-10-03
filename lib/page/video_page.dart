@@ -60,7 +60,7 @@ class VideoPage extends StatelessWidget {
           ),
           //Video actions______________
           Align(
-            alignment: informationAlign ?? Alignment.bottomRight,
+            alignment: actionsAlign ?? Alignment.bottomRight,
             child: Padding(
               padding: actionsPadding ?? const EdgeInsets.only( bottom: 70),
               child: ActionsToolbar(

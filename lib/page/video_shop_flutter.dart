@@ -66,13 +66,16 @@ class VideoShopFlutter extends StatefulWidget {
     required this.loadMore,
     this.informationPadding,
     required this.videoWatched,
-    this.initPage,
+    this.lastSeenPage,
     this.actionsPadding,
     this.informationAlign,
     this.actionsAlign,
+    this.updateLastSeenPage,
   }) : super(key: key);
 
-  final int? initPage;
+   final int? lastSeenPage;
+
+   final Function(int lastSeenPage)? updateLastSeenPage;
 
   /// Id of your watched videos
   final List<String> videoWatched;
@@ -153,7 +156,7 @@ class _VideoShopFlutterState extends State<VideoShopFlutter> {
 
 @override
   void initState() {
-  _pageController = PageController(initialPage: widget.initPage ?? 0);
+  _pageController = PageController(initialPage: widget.lastSeenPage ?? 0);
   super.initState();
   }
 
@@ -161,6 +164,9 @@ class _VideoShopFlutterState extends State<VideoShopFlutter> {
   Widget build(BuildContext context) {
     _pageController.addListener(() {
       if (_pageController.page != null) {
+        if(widget.updateLastSeenPage != null){
+          widget.updateLastSeenPage!(_pageController.page!.round());
+        }
         if (_pageController.page!.round() != currentPage) {
           currentPage = _pageController.page!.round();
           if (currentPage == widget.listData.length - (widget.pageSize / 2)) {
