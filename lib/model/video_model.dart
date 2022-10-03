@@ -10,20 +10,23 @@ class VideoModel {
   String url;
   String? thumbnail;
   bool liked;
+  String? productName;
+  String? productPermalink;
 
-  VideoModel({
-    this.id,
-    this.user,
-    this.userPic,
-    this.videoTitle,
-    this.songName,
-    this.likes,
-    this.comments,
-    this.videoDescription,
-    this.thumbnail,
-    required this.url,
-    this.liked = false,
-  });
+  VideoModel(
+      {this.id,
+      this.user,
+      this.userPic,
+      this.videoTitle,
+      this.songName,
+      this.likes,
+      this.comments,
+      this.videoDescription,
+      this.thumbnail,
+      required this.url,
+      this.liked = false,
+      this.productName,
+      this.productPermalink});
 
   VideoModel.fromJson(Map<dynamic, dynamic> json)
       : id = json['id'],
@@ -36,5 +39,7 @@ class VideoModel {
         url = json['url'],
         thumbnail = json['thumbnail'],
         videoDescription = json['description'],
-        liked = json['liked'] ?? false;
+        liked = json['liked'] ?? false,
+        productName = json['product_name'],
+        productPermalink = json['product_permalink'];
 }
