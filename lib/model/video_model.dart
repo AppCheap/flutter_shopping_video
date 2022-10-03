@@ -12,21 +12,24 @@ class VideoModel {
   bool liked;
   String? productName;
   String? productPermalink;
+  String stockStatus;
 
-  VideoModel(
-      {this.id,
-      this.user,
-      this.userPic,
-      this.videoTitle,
-      this.songName,
-      this.likes,
-      this.comments,
-      this.videoDescription,
-      this.thumbnail,
-      required this.url,
-      this.liked = false,
-      this.productName,
-      this.productPermalink});
+  VideoModel({
+    this.id,
+    this.user,
+    this.userPic,
+    this.videoTitle,
+    this.songName,
+    this.likes,
+    this.comments,
+    this.videoDescription,
+    this.thumbnail,
+    required this.url,
+    this.liked = false,
+    this.productName,
+    this.productPermalink,
+    this.stockStatus = 'instock',
+  });
 
   VideoModel.fromJson(Map<dynamic, dynamic> json)
       : id = json['id'],
@@ -41,5 +44,6 @@ class VideoModel {
         videoDescription = json['description'],
         liked = json['liked'] ?? false,
         productName = json['product_name'],
-        productPermalink = json['product_permalink'];
+        productPermalink = json['product_permalink'],
+        stockStatus = json['stock_status'];
 }
