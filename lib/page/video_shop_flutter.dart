@@ -53,21 +53,27 @@ class VideoShopFlutter extends StatefulWidget {
   ///  )
   ///
   /// ```
-  const VideoShopFlutter(
-      {Key? key,
-      required this.listData,
-      this.customVideoInfo,
-      this.followWidget,
-      this.likeWidget,
-      this.commentWidget,
-      this.shareWidget,
-      this.buyWidget,
-      required this.pageSize,
-      required this.loadMore,
-      this.contentPadding,
-       required this.videoWatched,
-      })
-      : super(key: key);
+  const VideoShopFlutter({
+    Key? key,
+    required this.listData,
+    this.customVideoInfo,
+    this.followWidget,
+    this.likeWidget,
+    this.commentWidget,
+    this.shareWidget,
+    this.buyWidget,
+    required this.pageSize,
+    required this.loadMore,
+    this.informationPadding,
+    required this.videoWatched,
+    this.initPage,
+    this.actionsPadding,
+    this.informationAlign,
+    this.actionsAlign,
+  }) : super(key: key);
+
+  final int? initPage;
+
   /// Id of your watched videos
   final List<String> videoWatched;
 
@@ -106,8 +112,18 @@ class VideoShopFlutter extends StatefulWidget {
   /// The seconds argument is your [pageSize]
   final Function(int page, int pageSize) loadMore;
 
-  /// Padding between content above video and device screen.
-  final EdgeInsetsGeometry? contentPadding;
+  /// Alignment of video information.
+  final AlignmentGeometry? informationAlign;
+
+  /// Alignment of video actions.
+  final AlignmentGeometry? actionsAlign;
+
+  /// Padding of video actions.
+  final EdgeInsetsGeometry? actionsPadding;
+
+  /// Padding of video information.
+  final EdgeInsetsGeometry? informationPadding;
+
   final Widget Function(VideoModel? video)? customVideoInfo;
   final Widget Function(VideoModel? video)? followWidget;
 
@@ -132,8 +148,14 @@ class VideoShopFlutter extends StatefulWidget {
 }
 
 class _VideoShopFlutterState extends State<VideoShopFlutter> {
-  final PageController _pageController = PageController();
+  late PageController _pageController;
   int currentPage = 0;
+
+@override
+  void initState() {
+  _pageController = PageController(initialPage: widget.initPage ?? 0);
+  super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -173,6 +195,10 @@ class _VideoShopFlutterState extends State<VideoShopFlutter> {
           shareWidget: widget.shareWidget,
           buyWidget: widget.buyWidget,
           videoWatched: widget.videoWatched,
+          actionsAlign: widget.actionsAlign,
+          actionsPadding: widget.actionsPadding,
+          informationAlign: widget.informationAlign,
+          informationPadding: widget.informationPadding,
         ),
       ),
     );
