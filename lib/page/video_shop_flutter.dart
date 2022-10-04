@@ -72,6 +72,7 @@ class VideoShopFlutter extends StatefulWidget {
     this.informationAlign,
     this.actionsAlign,
     this.updateLastSeenPage,
+    this.enableBackgroundContent,
   }) : super(key: key);
 
    final int? lastSeenPage;
@@ -147,6 +148,7 @@ class VideoShopFlutter extends StatefulWidget {
   final Widget Function(VideoModel? video)? shareWidget;
   final Widget Function(VideoModel? video)? buyWidget;
   final Widget Function(VideoModel? video, int index)? viewWidget;
+  final bool? enableBackgroundContent;
 
   @override
   State<VideoShopFlutter> createState() => _VideoShopFlutterState();
@@ -192,6 +194,7 @@ class _VideoShopFlutterState extends State<VideoShopFlutter> {
       children: List.generate(
         widget.listData.length,
         (index) => VideoPage(
+          enableBackgroundContent: widget.enableBackgroundContent,
           updateLastSeenPage: widget.updateLastSeenPage,
           video: VideoModel.fromJson(widget.listData[index]),
           customVideoInfo: widget.customVideoInfo,
