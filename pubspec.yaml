@@ -1,7 +1,7 @@
 name: video_shop_flutter
 description: A new Flutter package project.
 version: 0.0.1
-homepage:
+homepage: https://github.com/AppCheap/flutter_shopping_video
 
 environment:
   sdk: '>=2.18.0 <3.0.0'
