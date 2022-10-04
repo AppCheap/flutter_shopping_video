@@ -19,6 +19,7 @@ class VideoPage extends StatelessWidget {
     this.actionsPadding,
     required this.index,
     required this.updateLastSeenPage,
+    this.enableBackgroundContent = false,
   }) : super(key: key);
   final VideoModel video;
   final Widget Function(VideoModel? video)? customVideoInfo;
@@ -35,6 +36,7 @@ class VideoPage extends StatelessWidget {
   final EdgeInsetsGeometry? actionsPadding;
   final int index;
   final Function(int lastSeenPage)? updateLastSeenPage;
+  final bool? enableBackgroundContent;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -50,7 +52,27 @@ class VideoPage extends StatelessWidget {
               updateLastSeenPage: updateLastSeenPage,
             ),
           ),
-
+          if (enableBackgroundContent != null && enableBackgroundContent!)
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                height: 200,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                    stops: const [0.2, 0.4, 0.6, 0.8, 1],
+                    colors: <Color>[
+                      const Color(0xff000000).withOpacity(0.3),
+                      const Color(0xff000000).withOpacity(0.22),
+                      const Color(0xff000000).withOpacity(0.18),
+                      const Color(0xff000000).withOpacity(0.075),
+                      const Color(0xff000000).withOpacity(0.0),
+                    ],
+                  ),
+                ),
+              ),
+            ),
           //Video info______________
           Align(
             alignment: informationAlign ?? Alignment.bottomLeft,
@@ -69,8 +91,9 @@ class VideoPage extends StatelessWidget {
           Align(
             alignment: actionsAlign ?? Alignment.bottomRight,
             child: Padding(
-              padding: actionsPadding ?? const EdgeInsets.only( bottom: 70),
+              padding: actionsPadding ?? const EdgeInsets.only(bottom: 70),
               child: ActionsToolbar(
+                enableBackgroundContent: enableBackgroundContent,
                 video: video,
                 followWidget: followWidget,
                 likeWidget: likeWidget,

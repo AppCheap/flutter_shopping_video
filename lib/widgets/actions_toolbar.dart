@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:video_shop_flutter/model/model.dart';
 
 class ActionsToolbar extends StatelessWidget {
-
   final VideoModel video;
   final Widget Function(VideoModel? video)? followWidget;
   final Widget Function(VideoModel? video, Function(int likes, bool liked))? likeWidget;
@@ -10,47 +9,55 @@ class ActionsToolbar extends StatelessWidget {
   final Widget Function(VideoModel? video)? shareWidget;
   final Widget Function(VideoModel? video)? buyWidget;
   final Widget Function(VideoModel? video, int index)? viewWidget;
+  final bool? enableBackgroundContent;
   final int index;
-  const ActionsToolbar({
-    super.key,
-    required this.video,
-    required this.followWidget,
-    required this.likeWidget,
-    required this.commentWidget,
-    required this.shareWidget,
-    required this.buyWidget,
-    required this.viewWidget,
-    required this.index,
-  });
+  const ActionsToolbar(
+      {super.key,
+      required this.video,
+      required this.followWidget,
+      required this.likeWidget,
+      required this.commentWidget,
+      required this.shareWidget,
+      required this.buyWidget,
+      required this.viewWidget,
+      required this.index,
+      this.enableBackgroundContent});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        (followWidget != null) ? followWidget!(video) : const SizedBox.shrink(),
-        (likeWidget != null)
-            ? likeWidget!(
-                video,
-                (likes, liked) {
-                  video.likes = likes;
-                  video.liked = liked;
-                },
-              )
-            : _getSocialAction(icon: Icons.heart_broken, title: (video.likes ?? 0).toString()),
-        (commentWidget != null)
-            ? commentWidget!(video)
-            : const SizedBox.shrink(),
-        (shareWidget != null)
-            ? shareWidget!(video)
-            : _getSocialAction(icon: Icons.reply, title: 'Share', isShare: true),
-        (viewWidget != null)
-            ? viewWidget!(video, index)
-            : const SizedBox.shrink(),
-        (buyWidget != null)
-            ? buyWidget!(video)
-            : _getSocialAction(icon: Icons.shopping_cart_checkout_outlined, title: 'Buy'),
-      ],
+    return Container(
+      decoration: (enableBackgroundContent != null && enableBackgroundContent!)
+          ? BoxDecoration(
+              color: Colors.black.withOpacity(0.025),
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(5),
+                bottomLeft: Radius.circular(5),
+              ),
+            )
+          : null,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          (followWidget != null) ? followWidget!(video) : const SizedBox.shrink(),
+          (likeWidget != null)
+              ? likeWidget!(
+                  video,
+                  (likes, liked) {
+                    video.likes = likes;
+                    video.liked = liked;
+                  },
+                )
+              : _getSocialAction(icon: Icons.heart_broken, title: (video.likes ?? 0).toString()),
+          (commentWidget != null) ? commentWidget!(video) : const SizedBox.shrink(),
+          (shareWidget != null)
+              ? shareWidget!(video)
+              : _getSocialAction(icon: Icons.reply, title: 'Share', isShare: true),
+          (viewWidget != null) ? viewWidget!(video, index) : const SizedBox.shrink(),
+          (buyWidget != null)
+              ? buyWidget!(video)
+              : _getSocialAction(icon: Icons.shopping_cart_checkout_outlined, title: 'Buy'),
+        ],
+      ),
     );
   }
 

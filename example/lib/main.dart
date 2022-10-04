@@ -61,6 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
         listData: data,
         videoWatched: videoWatched,
         pageSize: 4,
+        enableBackgroundContent: true,
         loadMore: (page, pageSize) async {
           //just for test__
           debugPrint("load more...");
