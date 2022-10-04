@@ -166,9 +166,6 @@ class _VideoShopFlutterState extends State<VideoShopFlutter> {
   Widget build(BuildContext context) {
     _pageController.addListener(() {
       if (_pageController.page != null) {
-        if(widget.updateLastSeenPage != null){
-          widget.updateLastSeenPage!(_pageController.page!.round());
-        }
         if (_pageController.page!.round() != currentPage) {
           currentPage = _pageController.page!.round();
           if (currentPage == widget.listData.length - (widget.pageSize / 2)) {
@@ -195,6 +192,7 @@ class _VideoShopFlutterState extends State<VideoShopFlutter> {
       children: List.generate(
         widget.listData.length,
         (index) => VideoPage(
+          updateLastSeenPage: widget.updateLastSeenPage,
           video: VideoModel.fromJson(widget.listData[index]),
           customVideoInfo: widget.customVideoInfo,
           followWidget: widget.followWidget,
