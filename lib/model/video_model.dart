@@ -12,7 +12,7 @@ class VideoModel {
   bool liked;
   String? productName;
   String? productPermalink;
-  String stockStatus;
+  String? stockStatus;
 
   VideoModel({
     this.id,
