@@ -18,6 +18,7 @@ class VideoPage extends StatelessWidget {
     this.actionsAlign,
     this.actionsPadding,
     required this.index,
+    required this.updateLastSeenPage,
   }) : super(key: key);
   final VideoModel video;
   final Widget Function(VideoModel? video)? customVideoInfo;
@@ -33,6 +34,7 @@ class VideoPage extends StatelessWidget {
   final AlignmentGeometry? actionsAlign;
   final EdgeInsetsGeometry? actionsPadding;
   final int index;
+  final Function(int lastSeenPage)? updateLastSeenPage;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -44,6 +46,8 @@ class VideoPage extends StatelessWidget {
             child: VideoItem(
               video: video,
               videoWatched: videoWatched,
+              index: index,
+              updateLastSeenPage: updateLastSeenPage,
             ),
           ),
 

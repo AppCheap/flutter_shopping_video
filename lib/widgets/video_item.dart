@@ -9,9 +9,13 @@ class VideoItem extends StatefulWidget {
     Key? key,
     required this.video,
     required this.videoWatched,
+    required this.updateLastSeenPage,
+    required this.index,
   }) : super(key: key);
   final VideoModel video;
   final List<String> videoWatched;
+  final Function(int lastSeenPage)? updateLastSeenPage;
+  final int index;
   @override
   State<VideoItem> createState() => _VideoItemState();
 }
@@ -36,6 +40,9 @@ class _VideoItemState extends State<VideoItem> {
                   _videoController!.setLooping(true);
                   if(widget.video.id != null){
                     widget.videoWatched.add(widget.video.id!.toString());
+                  }
+                  if(widget.updateLastSeenPage != null){
+                    widget.updateLastSeenPage!(widget.index);
                   }
                 }
               }
