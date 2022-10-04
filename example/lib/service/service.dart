@@ -19,15 +19,15 @@ class ApiService {
     List<dynamic> response = await getData(page, perPage);
     for (var product in response) {
       List<dynamic> metaData = product['meta_data'];
-      int id = product['id'];
-      String url =
+      int? id = product['id'];
+      String? url =
           metaData.firstWhere((element) => element['key'] == '_app_builder_shopping_video_addons_video_url')['value'];
-      String title =
+      String? title =
           metaData.firstWhere((element) => element['key'] == '_app_builder_shopping_video_addons_video_name')['value'];
-      String description = metaData
+      String? description = metaData
           .firstWhere((element) => element['key'] == '_app_builder_shopping_video_addons_video_description')['value'];
-      int likes = metaData.firstWhere((element) => element['key'] == 'app_builder_shopping_video_likes')['value'];
-      String liked =  metaData.firstWhere((element) => element['key'] == 'app_builder_shopping_video_liked')['value'];
+      int? likes = metaData.firstWhere((element) => element['key'] == 'app_builder_shopping_video_likes')['value'];
+      String? liked =  metaData.firstWhere((element) => element['key'] == 'app_builder_shopping_video_liked')['value'];
       listData.add({
         'id': id,
         'url': url,
