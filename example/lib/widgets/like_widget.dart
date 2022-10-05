@@ -3,7 +3,13 @@ import 'package:example/service/service.dart';
 import 'package:flutter/material.dart';
 
 class LikeWidget extends StatefulWidget {
-  const LikeWidget({Key? key,required this.liked, required this.likes, required this.updateData, required this.id}) : super(key: key);
+  const LikeWidget(
+      {Key? key,
+      required this.liked,
+      required this.likes,
+      required this.updateData,
+      required this.id})
+      : super(key: key);
   final bool liked;
   final int likes;
   final int? id;
@@ -33,15 +39,15 @@ class _LikeWidgetState extends State<LikeWidget> {
       child: Column(
         children: [
           InkWell(
-            onTap: ()async{
-              if(localLiked){
+            onTap: () async {
+              if (localLiked) {
                 service.likeVideo(id: widget.id ?? 0, token: token);
                 setState(() {
                   localLikes -= 1;
                   localLiked = false;
                   widget.updateData(localLikes, localLiked);
                 });
-              }else{
+              } else {
                 service.likeVideo(id: widget.id ?? 0, token: token);
                 setState(() {
                   localLikes += 1;
@@ -50,13 +56,17 @@ class _LikeWidgetState extends State<LikeWidget> {
                 });
               }
             },
-            child: Icon(Icons.heart_broken, size: 25.0, color: (localLiked) ? Colors.red : Colors.white),
+            child: Icon(Icons.heart_broken,
+                size: 25.0, color: (localLiked) ? Colors.red : Colors.white),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 8.0),
             child: Text(
               localLikes.toString(),
-              style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 14.0),
+              style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 14.0),
             ),
           ),
         ],

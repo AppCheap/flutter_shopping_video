@@ -5,7 +5,9 @@ class VideoInformation extends StatelessWidget {
   final String videoTitle;
   final String songInfo;
 
-  const VideoInformation(this.username, this.videoTitle, this.songInfo, {super.key});
+  /// Create video information.
+  const VideoInformation(this.username, this.videoTitle, this.songInfo,
+      {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,10 @@ class VideoInformation extends StatelessWidget {
             children: <Widget>[
               Text(
                 username,
-                style: const TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                    fontSize: 16,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold),
               ),
               const SizedBox(
                 height: 7,
@@ -33,7 +38,8 @@ class VideoInformation extends StatelessWidget {
               const SizedBox(
                 height: 7,
               ),
-              Text(songInfo, style: const TextStyle(color: Colors.white, fontSize: 14.0)),
+              Text(songInfo,
+                  style: const TextStyle(color: Colors.white, fontSize: 14.0)),
               const SizedBox(
                 height: 10,
               ),

@@ -27,6 +27,7 @@ const List<double> stopGradient = [
 ];
 
 class VideoPage extends StatelessWidget {
+  /// Create video page view.
   const VideoPage({
     Key? key,
     required this.video,
@@ -49,7 +50,8 @@ class VideoPage extends StatelessWidget {
   final VideoModel video;
   final Widget Function(VideoModel? video)? customVideoInfo;
   final Widget Function(VideoModel? video)? followWidget;
-  final Widget Function(VideoModel? video, Function(int likes, bool liked))? likeWidget;
+  final Widget Function(VideoModel? video, Function(int likes, bool liked))?
+      likeWidget;
   final Widget Function(VideoModel? video)? commentWidget;
   final Widget Function(VideoModel? video)? shareWidget;
   final Widget Function(VideoModel? video)? buyWidget;
@@ -68,6 +70,7 @@ class VideoPage extends StatelessWidget {
       color: Colors.black,
       child: Stack(
         children: [
+          // Video.
           Align(
             alignment: Alignment.center,
             child: VideoItem(
@@ -77,6 +80,7 @@ class VideoPage extends StatelessWidget {
               updateLastSeenPage: updateLastSeenPage,
             ),
           ),
+          // Background content.
           if (enableBackgroundContent != null && enableBackgroundContent!)
             Align(
               alignment: Alignment.bottomCenter,
@@ -92,11 +96,12 @@ class VideoPage extends StatelessWidget {
                 ),
               ),
             ),
-          //Video info______________
+          // Video info______________.
           Align(
             alignment: informationAlign ?? Alignment.bottomLeft,
             child: Padding(
-              padding: informationPadding ?? const EdgeInsets.only(left: 20, bottom: 70),
+              padding: informationPadding ??
+                  const EdgeInsets.only(left: 20, bottom: 70),
               child: (customVideoInfo != null)
                   ? customVideoInfo!(video)
                   : VideoInformation(
@@ -106,7 +111,7 @@ class VideoPage extends StatelessWidget {
                     ),
             ),
           ),
-          //Video actions______________
+          // Video actions______________.
           Align(
             alignment: actionsAlign ?? Alignment.bottomRight,
             child: Padding(

@@ -75,9 +75,11 @@ class VideoShopFlutter extends StatefulWidget {
     this.enableBackgroundContent,
   }) : super(key: key);
 
-   final int? lastSeenPage;
+  /// Index of last seen page.
+  final int? lastSeenPage;
 
-   final Function(int lastSeenPage)? updateLastSeenPage;
+  /// Callback function to update last seen page.
+  final Function(int lastSeenPage)? updateLastSeenPage;
 
   /// Id of your watched videos
   final List<String> videoWatched;
@@ -129,10 +131,13 @@ class VideoShopFlutter extends StatefulWidget {
   /// Padding of video information.
   final EdgeInsetsGeometry? informationPadding;
 
+  /// Create video information widget.
   final Widget Function(VideoModel? video)? customVideoInfo;
+
+  /// Create follow action widget.
   final Widget Function(VideoModel? video)? followWidget;
 
-  /// Create like widget.
+  /// Create like action widget.
   ///
   /// The first argument is instant of Video.
   ///
@@ -143,11 +148,26 @@ class VideoShopFlutter extends StatefulWidget {
   /// first is total likes, second is liked status (true or false)
   ///
   /// this function need be called when total likes or liked status be changed
-  final Widget Function(VideoModel? video, Function(int likes, bool liked))? likeWidget;
+  final Widget Function(VideoModel? video, Function(int likes, bool liked))?
+      likeWidget;
+
+  /// Create action comment widget.
   final Widget Function(VideoModel? video)? commentWidget;
+
+  /// Create action share widget.
   final Widget Function(VideoModel? video)? shareWidget;
+
+  /// Create action buy widget.
   final Widget Function(VideoModel? video)? buyWidget;
+
+  /// Create action view product widget
   final Widget Function(VideoModel? video, int index)? viewWidget;
+
+  /// On/Off background content.
+  ///
+  /// If `enableBackgroundContent = true` background is showed,
+  ///
+  /// if value is null or false, background is hidden
   final bool? enableBackgroundContent;
 
   @override
@@ -158,14 +178,15 @@ class _VideoShopFlutterState extends State<VideoShopFlutter> {
   late PageController _pageController;
   int currentPage = 0;
 
-@override
+  @override
   void initState() {
-  _pageController = PageController(initialPage: widget.lastSeenPage ?? 0);
-  super.initState();
+    _pageController = PageController(initialPage: widget.lastSeenPage ?? 0);
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    // Handle load more.
     _pageController.addListener(() {
       if (_pageController.page != null) {
         if (_pageController.page!.round() != currentPage) {
