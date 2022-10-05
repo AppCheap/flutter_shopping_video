@@ -61,6 +61,7 @@ class ActionsToolbar extends StatelessWidget {
     );
   }
 
+  // Build default actions
   Widget _getSocialAction({required String title, required IconData icon, bool isShare = false}) {
     return Container(
         margin: const EdgeInsets.only(top: 15.0),
