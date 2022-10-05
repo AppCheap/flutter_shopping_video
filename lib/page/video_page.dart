@@ -68,6 +68,7 @@ class VideoPage extends StatelessWidget {
       color: Colors.black,
       child: Stack(
         children: [
+          // Video.
           Align(
             alignment: Alignment.center,
             child: VideoItem(
@@ -77,6 +78,7 @@ class VideoPage extends StatelessWidget {
               updateLastSeenPage: updateLastSeenPage,
             ),
           ),
+          // Background content.
           if (enableBackgroundContent != null && enableBackgroundContent!)
             Align(
               alignment: Alignment.bottomCenter,
@@ -92,7 +94,7 @@ class VideoPage extends StatelessWidget {
                 ),
               ),
             ),
-          //Video info______________
+          // Video info______________.
           Align(
             alignment: informationAlign ?? Alignment.bottomLeft,
             child: Padding(
@@ -106,7 +108,7 @@ class VideoPage extends StatelessWidget {
                     ),
             ),
           ),
-          //Video actions______________
+          // Video actions______________.
           Align(
             alignment: actionsAlign ?? Alignment.bottomRight,
             child: Padding(
