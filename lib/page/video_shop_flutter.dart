@@ -76,12 +76,20 @@ class VideoShopFlutter extends StatefulWidget {
   }) : super(key: key);
 
   /// Index of last seen page.
+  ///
+  /// If [lastSeenPage] has value: initial page of video page view is [lastSeenPage].
+  ///
+  /// Default value is 0.
   final int? lastSeenPage;
 
   /// Callback function to update last seen page.
+  ///
+  /// Called every time video page is changed.
   final Function(int lastSeenPage)? updateLastSeenPage;
 
-  /// Id of your watched videos
+  /// Id of your watched videos.
+  ///
+  /// The [videoWatched] will be updated every time new video is watched.
   final List<String> videoWatched;
 
   /// Your input data.
