@@ -96,6 +96,13 @@ class _MyHomePageState extends State<MyHomePage> {
      'id': 123,
      'url': 'https://video.mp4'
      'thumbnail': 'https://thumbnail.jpg'
+     'video_title': 'title',
+     'description': 'description',
+     'likes': 5 ,
+     'liked': true,
+     'product_name': 'productName',
+     'product_permalink': 'productPermalink',
+     'stock_status': 'stockStatus',
    }
   ```
   Please follow above format data.
