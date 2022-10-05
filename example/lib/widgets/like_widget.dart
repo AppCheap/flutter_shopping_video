@@ -50,7 +50,7 @@ class _LikeWidgetState extends State<LikeWidget> {
                 });
               }
             },
-            child: Icon(Icons.heart_broken, size: 25.0, color: (localLiked) ? Colors.red : Colors.grey[300]),
+            child: Icon(Icons.heart_broken, size: 25.0, color: (localLiked) ? Colors.red : Colors.white),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 8.0),
