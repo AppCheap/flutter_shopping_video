@@ -1,6 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:video_shop_flutter/video_shop_flutter.dart';
 
+final List<Color> gradientBackground = [
+  const Color(0xff000000).withOpacity(0.9),
+  const Color(0xff000000).withOpacity(0.8),
+  const Color(0xff000000).withOpacity(0.7),
+  const Color(0xff000000).withOpacity(0.6),
+  const Color(0xff000000).withOpacity(0.5),
+  const Color(0xff000000).withOpacity(0.4),
+  const Color(0xff000000).withOpacity(0.3),
+  const Color(0xff000000).withOpacity(0.2),
+  const Color(0xff000000).withOpacity(0.1),
+  const Color(0xff000000).withOpacity(0.0),
+];
+const List<double> stopGradient = [
+  0.1,
+  0.2,
+  0.3,
+  0.4,
+  0.5,
+  0.6,
+  0.7,
+  0.8,
+  0.9,
+  1.0,
+];
+
 class VideoPage extends StatelessWidget {
   const VideoPage({
     Key? key,
@@ -61,14 +86,8 @@ class VideoPage extends StatelessWidget {
                   gradient: LinearGradient(
                     begin: Alignment.bottomCenter,
                     end: Alignment.topCenter,
-                    stops: const [0.2, 0.4, 0.6, 0.8, 1],
-                    colors: <Color>[
-                      const Color(0xff000000).withOpacity(0.3),
-                      const Color(0xff000000).withOpacity(0.22),
-                      const Color(0xff000000).withOpacity(0.18),
-                      const Color(0xff000000).withOpacity(0.075),
-                      const Color(0xff000000).withOpacity(0.0),
-                    ],
+                    stops: stopGradient,
+                    colors: gradientBackground,
                   ),
                 ),
               ),

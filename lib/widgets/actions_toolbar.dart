@@ -28,7 +28,7 @@ class ActionsToolbar extends StatelessWidget {
     return Container(
       decoration: (enableBackgroundContent != null && enableBackgroundContent!)
           ? BoxDecoration(
-              color: Colors.black.withOpacity(0.025),
+              color: Colors.black.withOpacity(0.05),
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(5),
                 bottomLeft: Radius.circular(5),
@@ -67,7 +67,7 @@ class ActionsToolbar extends StatelessWidget {
         width: 60.0,
         height: 60.0,
         child: Column(children: [
-          Icon(icon, size: isShare ? 25.0 : 25.0, color: Colors.grey[300]),
+          Icon(icon, size: isShare ? 25.0 : 25.0, color: Colors.white),
           Padding(
             padding: EdgeInsets.only(top: isShare ? 8.0 : 8.0),
             child: Text(title,
