@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoPlayerApp extends StatefulWidget {
+  /// Create video player.
   const VideoPlayerApp({Key? key, required this.controller}) : super(key: key);
   final VideoPlayerController controller;
   @override
@@ -10,8 +11,6 @@ class VideoPlayerApp extends StatefulWidget {
 
 class _VideoPlayerAppState extends State<VideoPlayerApp> {
   bool _showPause = false;
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -43,8 +42,7 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
                     ),
                   ),
                 ),
-                if (_showPause)
-                  const PauseIcon(),
+                if (_showPause) const PauseIcon(),
               ],
             )
           : AspectRatio(
@@ -52,17 +50,16 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
               child: Stack(
                 children: [
                   VideoPlayer(widget.controller),
-                  if (_showPause)
-                    const PauseIcon(),
+                  if (_showPause) const PauseIcon(),
                 ],
               ),
             ),
     );
   }
-
 }
 
 class PauseIcon extends StatelessWidget {
+  /// Create pause icon.
   const PauseIcon({Key? key}) : super(key: key);
 
   @override
@@ -77,10 +74,10 @@ class PauseIcon extends StatelessWidget {
           borderRadius: BorderRadius.circular(50),
         ),
         child: Center(
-          child: Icon(Icons.play_arrow, color: Colors.white.withOpacity(0.5), size: 40),
+          child: Icon(Icons.play_arrow,
+              color: Colors.white.withOpacity(0.5), size: 40),
         ),
       ),
     );
   }
 }
-

@@ -148,7 +148,8 @@ class VideoShopFlutter extends StatefulWidget {
   /// first is total likes, second is liked status (true or false)
   ///
   /// this function need be called when total likes or liked status be changed
-  final Widget Function(VideoModel? video, Function(int likes, bool liked))? likeWidget;
+  final Widget Function(VideoModel? video, Function(int likes, bool liked))?
+      likeWidget;
 
   /// Create action comment widget.
   final Widget Function(VideoModel? video)? commentWidget;

@@ -32,7 +32,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  // List<Map<String, dynamic>> data = playList.sublist(0, 8);
   List<Map<String, dynamic>> data = [];
   ApiService service = ApiService();
   List<String> videoWatched = [];
@@ -66,7 +65,8 @@ class _MyHomePageState extends State<MyHomePage> {
           //just for test__
           debugPrint("load more...");
           debugPrint("Video $videoWatched");
-          List<Map<String, dynamic>> newData = await service.mapData((page + 2), 4);
+          List<Map<String, dynamic>> newData =
+              await service.mapData((page + 2), 4);
           if (newData.isNotEmpty) {
             setState(() {
               data = [...data, ...newData];

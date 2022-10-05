@@ -5,6 +5,7 @@ import 'package:video_shop_flutter/widgets/video_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class VideoItem extends StatefulWidget {
+  /// Create video item.
   const VideoItem({
     Key? key,
     required this.video,
@@ -39,11 +40,11 @@ class _VideoItemState extends State<VideoItem> {
                   _videoController!.play();
                   _videoController!.setLooping(true);
                   // Update watched videos.
-                  if(widget.video.id != null){
+                  if (widget.video.id != null) {
                     widget.videoWatched.add(widget.video.id!.toString());
                   }
                   // Update last seen video.
-                  if(widget.updateLastSeenPage != null){
+                  if (widget.updateLastSeenPage != null) {
                     widget.updateLastSeenPage!(widget.index);
                   }
                 }
@@ -78,12 +79,13 @@ class _VideoItemState extends State<VideoItem> {
             ),
             onVisibilityChanged: (info) {
               if (info.visibleFraction > 0.6) {
-                _videoController = VideoPlayerController.network(widget.video.url)
-                  ..initialize().then(
-                    (_) {
-                      setState(() {});
-                    },
-                  );
+                _videoController =
+                    VideoPlayerController.network(widget.video.url)
+                      ..initialize().then(
+                        (_) {
+                          setState(() {});
+                        },
+                      );
               }
             },
           );
