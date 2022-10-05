@@ -53,16 +53,20 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     debugPrint("\n data length: ${data.length} \n");
+
     return Scaffold(
       body: VideoShopFlutter(
-        updateLastSeenPage: (_) {},
-        lastSeenPage: (videoWatched.isEmpty) ? 0 : (videoWatched.length - 1),
+        // Called every time video page is changed.
+        updateLastSeenPage: (lastSeenPageIndex) {},
+        // Video data.
         listData: data,
+        // Watched videos, it's updated every time new video is watched.
         videoWatched: videoWatched,
         pageSize: 4,
         enableBackgroundContent: true,
+        // Load more video data.
         loadMore: (page, pageSize) async {
-          //just for test__
+          // Just for test.
           debugPrint("load more...");
           debugPrint("Video $videoWatched");
           List<Map<String, dynamic>> newData =
@@ -72,8 +76,9 @@ class _MyHomePageState extends State<MyHomePage> {
               data = [...data, ...newData];
             });
           }
-          //_______________
+          //.
         },
+        // Your custom widget.
         likeWidget: (video, updateData) {
           return LikeWidget(
             likes: video?.likes ?? 0,
