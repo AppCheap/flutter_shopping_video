@@ -17,7 +17,7 @@ Flutter Shopping Video: Create video player layout like tiktok.
 
 Video player layout: 
 
-![](https://github.com/AppCheap/flutter_shopping_video/blob/main/feature.gif)
+![](https://github.com/AppCheap/flutter_shopping_video/blob/3ca297a9967053e1ab790b1e34b963284876b5a4/example.gif)
 
 ## Getting started
 
