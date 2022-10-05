@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
 class ApiService {
+  /// Get data.
   Future<dynamic> getData(int page, int perPage) async {
     http.Response response = await http.get(
       Uri.parse(
@@ -13,6 +14,7 @@ class ApiService {
     return jsonDecode(response.body);
   }
 
+  /// Map data.
   Future<List<Map<String, dynamic>>> mapData(int page, int perPage) async {
     List<Map<String, dynamic>> listData = [];
     List<dynamic> response = await getData(page, perPage);

@@ -3,6 +3,7 @@ import 'package:example/service/service.dart';
 import 'package:flutter/material.dart';
 
 class LikeWidget extends StatefulWidget {
+  /// Create like widget.
   const LikeWidget(
       {Key? key,
       required this.liked,

@@ -32,7 +32,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  // List<Map<String, dynamic>> data = playList.sublist(0, 8);
   List<Map<String, dynamic>> data = [];
   ApiService service = ApiService();
   List<String> videoWatched = [];
