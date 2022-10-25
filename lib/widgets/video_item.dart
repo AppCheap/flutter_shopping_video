@@ -49,6 +49,11 @@ class _VideoItemState extends State<VideoItem> {
                   }
                 }
               }
+              if(visibleInfo.visibleFraction == 0){
+                if(_videoController!.value.isPlaying){
+                  _videoController!.pause();
+                }
+              }
             },
             key: UniqueKey(),
             child: VideoPlayerApp(
