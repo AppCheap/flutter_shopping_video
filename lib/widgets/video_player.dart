@@ -13,6 +13,30 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
   bool _showPause = false;
 
   @override
+  void initState() {
+    widget.controller.addListener(() {
+      if(widget.controller.value.isPlaying){
+        if(_showPause){
+          if(mounted){
+            setState(() {
+              _showPause = false;
+            });
+          }
+        }
+      }else{
+        if(!_showPause){
+          if(mounted){
+            setState(() {
+              _showPause = true;
+            });
+          }
+        }
+      }
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     double screenRatio = MediaQuery.of(context).size.aspectRatio;
     return GestureDetector(
