@@ -1,6 +1,6 @@
 name: video_shop_flutter
 description: A Flutter plugin to create shopping video widget like Tiktok and Youtube shorts. 
-version: 0.0.4
+version: 0.0.5
 homepage: https://github.com/AppCheap/flutter_shopping_video
 
 environment:
