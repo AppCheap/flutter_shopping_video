@@ -56,21 +56,21 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
       },
       child: (widget.controller.value.aspectRatio < screenRatio)
           ? AbsorbPointer(
-              child: AspectRatio(
-          aspectRatio: widget.controller.value.aspectRatio,
-          child: Stack(
-            children: [
-              InkWell(
-                onTap: (){
-                  print('GEsss');
-                },
-                child: VideoPlayer(widget.controller),
-              ),
-              if (_showPause) const PauseIcon(),
-            ],
-          ),
-        ),
-          )
+              child: Stack(
+              children: [
+                SizedBox.expand(
+                  child: FittedBox(
+                    fit: BoxFit.cover,
+                    child: SizedBox(
+                      width: widget.controller.value.size.width,
+                      height: widget.controller.value.size.height,
+                      child: VideoPlayer(widget.controller),
+                    ),
+                  ),
+                ),
+                if (_showPause) const PauseIcon(),
+              ],
+            )
           : AbsorbPointer(
               child: AspectRatio(
           aspectRatio: widget.controller.value.aspectRatio,
