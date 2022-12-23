@@ -57,7 +57,7 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
       child: (widget.controller.value.aspectRatio < screenRatio)
           ? AbsorbPointer(
               child: Stack(
-              children: [
+                children: [
                 SizedBox.expand(
                   child: FittedBox(
                     fit: BoxFit.cover,
@@ -70,6 +70,7 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
                 ),
                 if (_showPause) const PauseIcon(),
               ],
+            )
             )
           : AbsorbPointer(
               child: AspectRatio(
