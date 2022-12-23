@@ -27,6 +27,11 @@ class _VideoItemState extends State<VideoItem> {
   @override
   void dispose() async{
     super.dispose();
+    if(_videoController != null){
+      if(_videoController!.value.isPlaying){
+        _videoController!.pause();
+      }
+    }
     await _videoController?.dispose().then((value) {
       _videoController = null;
     });
@@ -52,11 +57,11 @@ class _VideoItemState extends State<VideoItem> {
                 }
               }
               if(visibleInfo.visibleFraction == 0){
-                // if(_videoController != null){
-                //   if(_videoController!.value.isPlaying){
-                //     _videoController!.pause();
-                //   }
-                // }
+                if(_videoController != null){
+                  if(_videoController!.value.isPlaying){
+                    _videoController!.pause();
+                  }
+                }
               }
             },
             key: UniqueKey(),

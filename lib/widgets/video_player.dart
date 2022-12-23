@@ -41,6 +41,7 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
     double screenRatio = MediaQuery.of(context).size.aspectRatio;
     return GestureDetector(
       onTap: () {
+        print("Gesss");
         if (widget.controller.value.isPlaying) {
           widget.controller.pause();
           setState(() {
@@ -54,30 +55,33 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
         }
       },
       child: (widget.controller.value.aspectRatio < screenRatio)
-          ? Stack(
-              children: [
-                SizedBox.expand(
-                  child: FittedBox(
-                    fit: BoxFit.cover,
-                    child: SizedBox(
-                      width: widget.controller.value.size.width,
-                      height: widget.controller.value.size.height,
-                      child: VideoPlayer(widget.controller),
-                    ),
-                  ),
-                ),
-                if (_showPause) const PauseIcon(),
-              ],
-            )
-          : AspectRatio(
-              aspectRatio: widget.controller.value.aspectRatio,
-              child: Stack(
-                children: [
-                  VideoPlayer(widget.controller),
-                  if (_showPause) const PauseIcon(),
-                ],
+          ? AbsorbPointer(
+              child: AspectRatio(
+          aspectRatio: widget.controller.value.aspectRatio,
+          child: Stack(
+            children: [
+              InkWell(
+                onTap: (){
+                  print('GEsss');
+                },
+                child: VideoPlayer(widget.controller),
               ),
-            ),
+              if (_showPause) const PauseIcon(),
+            ],
+          ),
+        ),
+          )
+          : AbsorbPointer(
+              child: AspectRatio(
+          aspectRatio: widget.controller.value.aspectRatio,
+          child: Stack(
+            children: [
+              VideoPlayer(widget.controller),
+              if (_showPause) const PauseIcon(),
+            ],
+          ),
+        ),
+          ),
     );
   }
 }
