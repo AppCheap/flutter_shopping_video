@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   video_player: ^2.4.7
-  visibility_detector: ^0.3.3
+  visibility_detector: ^0.4.0+2
 
 
 dev_dependencies:
