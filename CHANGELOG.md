@@ -1,4 +1,4 @@
-## 1.1.0
+## 1.1.1
 
 * Upgrade: Upgrade visibility_detector
 
