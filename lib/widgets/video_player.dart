@@ -41,7 +41,6 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
     double screenRatio = MediaQuery.of(context).size.aspectRatio;
     return GestureDetector(
       onTap: () {
-        print("Gesss");
         if (widget.controller.value.isPlaying) {
           widget.controller.pause();
           setState(() {

@@ -94,7 +94,8 @@ class _VideoItemState extends State<VideoItem> {
             onVisibilityChanged: (info) {
               if (info.visibleFraction > 0.6) {
                 _videoController =
-                    VideoPlayerController.network(widget.video.url)
+                    VideoPlayerController.networkUrl(
+                    Uri.parse(widget.video.url))
                       ..initialize().then(
                         (_) {
                           setState(() {});
