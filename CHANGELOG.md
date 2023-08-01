@@ -1,7 +1,3 @@
-## 1.2.0
-
-* Imporved: Remove warning
-
 ## 1.1.0
 
 * Upgrade: Upgrade visibility_detector
