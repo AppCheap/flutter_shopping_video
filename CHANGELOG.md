@@ -1,3 +1,7 @@
+## 1.1.0
+
+* Upgrade: Upgrade visibility_detector
+
 ## 1.0.0
 
 * Improve: Update video_player.dart
